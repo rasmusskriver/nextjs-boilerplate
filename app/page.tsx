@@ -1,65 +1,97 @@
-import Image from "next/image";
+import Header from "@/components/Header";
+import CVGallery from "@/components/CVGallery";
+import { ArrowRight, FileText, Shield, Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-600/5 dark:to-purple-600/5"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+          <div className="text-center space-y-8">
+            <h1 className="text-5xl sm:text-7xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
+              Del dit{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                professionelle CV
+              </span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              En moderne platform hvor du nemt kan dele og opdage CV'er fra talentfulde professionelle
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+              >
+                Kom i gang
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href="#cvs"
+                className="flex items-center gap-2 px-8 py-4 bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 text-zinc-900 dark:text-zinc-100 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105"
+              >
+                Se CV'er
+              </a>
+            </div>
+          </div>
+
+          {/* Features */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6">
+                <FileText className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">
+                Nem upload
+              </h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Upload dit CV på få sekunder og gør det tilgængeligt for andre
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mb-6">
+                <Shield className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">
+                Sikker login
+              </h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Beskyttet med moderne authentication for din sikkerhed
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="w-14 h-14 bg-gradient-to-r from-pink-600 to-pink-700 rounded-xl flex items-center justify-center mb-6">
+                <Zap className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">
+                Lynhurtig
+              </h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Bygget med Next.js 16 for optimal performance
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CV Gallery */}
+      <section id="cvs" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-4">
+            Udforsk CV'er
+          </h2>
+          <p className="text-xl text-zinc-600 dark:text-zinc-400">
+            Se hvad andre har delt på platformen
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <CVGallery />
+      </section>
     </div>
   );
 }

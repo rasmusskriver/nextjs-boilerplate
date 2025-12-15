@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CV Deling Platform 🚀
 
-## Getting Started
+En moderne, professionel platform til at dele og opdage CV'er, bygget med Next.js 16, Stack Auth, Neon PostgreSQL og UploadThing.
 
-First, run the development server:
+## ✨ Features
+
+- 🔐 **Sikker Authentication** - Stack Auth integration med moderne login/logout
+- 📄 **CV Upload** - Upload PDF CV'er med drag-and-drop interface
+- 🎨 **Moderne UI** - Elegant design med Tailwind CSS og gradients
+- 💾 **Database Integration** - Neon PostgreSQL med Drizzle ORM
+- 🔍 **CV Gallery** - Gennemse alle uploadede CV'er med detaljer
+- 👤 **Bruger Management** - Personligt dashboard og CV administration
+- ⚡ **Performance** - Optimeret med Next.js 16 og moderne best practices
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16
+- **Database**: Neon PostgreSQL
+- **ORM**: Drizzle ORM
+- **Authentication**: Stack Auth
+- **File Upload**: UploadThing
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Language**: TypeScript
+
+## 📋 Setup Guide
+
+### 1. Installer dependencies
+
+Dependencies er allerede installeret, men hvis du har brug for at geninstallere:
+
+```bash
+npm install
+```
+
+### 2. Opsæt UploadThing
+
+1. Gå til [uploadthing.com](https://uploadthing.com)
+2. Opret en konto og en ny app
+3. Kopier din API key
+4. Tilføj den til `.env.local`:
+
+```env
+UPLOADTHING_TOKEN=din_uploadthing_token_her
+```
+
+### 3. Database er allerede sat op
+
+Databasen er allerede konfigureret med Neon og schema er pushet. Du kan se forbindelsen i `.env.local`.
+
+### 4. Start udviklingsserveren
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Åbn [http://localhost:3000](http://localhost:3000) i din browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Projektstruktur
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+/
+├── app/
+│   ├── api/
+│   │   ├── auth/[...stack]/   # Stack Auth endpoints
+│   │   ├── cvs/               # CV CRUD operations
+│   │   └── uploadthing/       # File upload
+│   ├── dashboard/             # Dashboard side (kræver login)
+│   ├── layout.tsx             # Root layout med providers
+│   └── page.tsx               # Home page
+├── components/
+│   ├── CVGallery.tsx          # Vis alle CV'er
+│   ├── CVUploadForm.tsx       # Upload formular
+│   └── Header.tsx             # Navigation header
+├── lib/
+│   ├── db/
+│   │   ├── schema.ts          # Database schema
+│   │   ├── index.ts           # DB connection
+│   │   └── migrations/        # SQL migrations
+│   ├── stack.ts               # Stack Auth config
+│   └── uploadthing.ts         # UploadThing helpers
+└── drizzle.config.ts          # Drizzle konfiguration
+```
 
-## Learn More
+## 🎯 Sådan bruges platformen
 
-To learn more about Next.js, take a look at the following resources:
+### For brugere:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Gå til hjemmesiden** - Se hero section og features
+2. **Se CV'er** - Scroll ned for at se alle uploadede CV'er
+3. **Log ind** - Klik på "Log ind" i header
+4. **Upload CV** - Gå til Dashboard og upload dit PDF CV
+5. **Administrer** - Se og slet dine egne CV'er
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Database Schema:
 
-## Deploy on Vercel
+```sql
+Table: cvs
+- id (uuid, primary key)
+- userId (text)
+- userName (text)
+- userEmail (text)
+- title (text)
+- description (text, nullable)
+- fileUrl (text)
+- fileName (text)
+- fileSize (text)
+- uploadedAt (timestamp)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Anbefalet)
+
+1. Push koden til GitHub
+2. Importer projektet i Vercel
+3. Environment variables er allerede sat op
+4. Deploy! 
+
+## 🔑 Environment Variables
+
+Alle nødvendige environment variables er allerede i `.env.local`:
+
+- ✅ `DATABASE_URL` - Neon database forbindelse
+- ✅ `NEXT_PUBLIC_STACK_PROJECT_ID` - Stack Auth projekt ID
+- ✅ `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY` - Stack Auth client key
+- ✅ `STACK_SECRET_SERVER_KEY` - Stack Auth server key
+- ⚠️ `UPLOADTHING_TOKEN` - Skal tilføjes fra uploadthing.com
+
+## 💡 Features i detaljer
+
+### Authentication
+- Stack Auth integration med email/password
+- Protected routes (dashboard)
+- Bruger context tilgængelig i hele appen
+
+### CV Upload
+- Drag-and-drop PDF upload
+- Max 4MB filstørrelse
+- Automatisk metadata extraction
+- Preview af valgt fil
+
+### CV Gallery
+- Responsive grid layout
+- Søgning og filtrering
+- Download CV direkte
+- Slet dine egne CV'er
+
+### UI/UX
+- Dark mode support
+- Gradient accents
+- Hover animations
+- Responsive design
+- Loading states
+- Error handling
+
+## 📞 Support
+
+Hvis du har spørgsmål eller problemer, tjek først:
+
+1. Er alle environment variables sat korrekt?
+2. Er UploadThing token tilføjet?
+3. Kører udvikingsserveren på port 3000?
+
+## 🎨 Customization
+
+Du kan nemt tilpasse designet ved at ændre:
+
+- Farver i Tailwind klasserne
+- Gradient kombinationer
+- Layout i components
+- Text og beskrivelser
+
+Held og lykke med din CV deling platform! 🎉
+
