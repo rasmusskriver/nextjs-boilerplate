@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect, useState, Suspense } from "react";
-import { FileText, Download, Trash2, Calendar, User, Mail } from "lucide-react";
+import { FileText, Download, Calendar, User, Mail } from "lucide-react";
 import type { CV } from "@/lib/db/schema";
 
-function CVGalleryContent() {
+interface CVGalleryProps {
+  limit?: number;
+}
+
+function CVGalleryContent({ limit }: CVGalleryProps) {
   const [cvs, setCVs] = useState<CV[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +16,8 @@ function CVGalleryContent() {
     try {
       const response = await fetch("/api/cvs");
       const data = await response.json();
-      setCVs(data);
+      const displayedData = limit ? data.slice(0, limit) : data;
+      setCVs(displayedData);
     } catch (error) {
       console.error("Error fetching CVs:", error);
     } finally {
@@ -23,20 +28,6 @@ function CVGalleryContent() {
   useEffect(() => {
     fetchCVs();
   }, []);
-
-  const handleDelete = async (id: string) => {
-    if (!confirm("Er du sikker på at du vil slette dette CV?")) return;
-
-    try {
-      const response = await fetch(`/api/cvs/${id}`, { method: "DELETE" });
-      if (response.ok) {
-        setCVs(cvs.filter((cv) => cv.id !== id));
-      }
-    } catch (error) {
-      console.error("Error deleting CV:", error);
-      alert("Kunne ikke slette CV");
-    }
-  };
 
   const formatDate = (date: Date | null) => {
     if (!date) return "";
@@ -77,15 +68,7 @@ function CVGalleryContent() {
           className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
         >
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
-            <div className="flex items-start justify-between">
-              <FileText className="w-10 h-10 text-white" />
-              <button
-                onClick={() => handleDelete(cv.id)}
-                className="p-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition"
-              >
-                <Trash2 className="w-4 h-4 text-white" />
-              </button>
-            </div>
+            <FileText className="w-10 h-10 text-white" />
           </div>
 
           <div className="p-6 space-y-4">
@@ -145,10 +128,10 @@ function CVGalleryFallback() {
   );
 }
 
-export default function CVGallery() {
+export default function CVGallery({ limit }: CVGalleryProps = {}) {
   return (
     <Suspense fallback={<CVGalleryFallback />}>
-      <CVGalleryContent />
+      <CVGalleryContent limit={limit} />
     </Suspense>
   );
 }

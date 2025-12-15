@@ -81,20 +81,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CV Gallery */}
+      {/* CV Preview Section */}
       <section
         id="cvs"
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
       >
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-4">
-            Udforsk CV'er
+            Seneste CV'er
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400">
-            Se hvad andre har delt på platformen
+          <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-6">
+            Se de nyeste CV'er fra vores community
           </p>
+          <Link
+            href="/cvs"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+          >
+            Se alle CV'er
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
-        <CVGallery />
+        <CVGallery limit={6} />
+        <div className="text-center mt-12">
+          <Link
+            href="/cvs"
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-lg group transition-colors"
+          >
+            Udforsk flere CV'er
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       </section>
     </div>
   );

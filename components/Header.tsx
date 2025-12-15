@@ -19,6 +19,26 @@ export default function Header() {
             </span>
           </Link>
 
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {user && (
+              <>
+                <Link
+                  href="/cvs"
+                  className="text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >
+                  Se CV'er
+                </Link>
+                <Link
+                  href="/dashboard"
+                  className="text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+                >
+                  Dashboard
+                </Link>
+              </>
+            )}
+          </nav>
+
           {/* User section */}
           <div className="flex items-center gap-4">
             {user ? (

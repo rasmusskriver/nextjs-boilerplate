@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import CVUploadForm from "@/components/CVUploadForm";
-import CVGallery from "@/components/CVGallery";
+import MyCVGallery from "@/components/MyCVGallery";
 import { Upload, LayoutDashboard, Settings } from "lucide-react";
 import Link from "next/link";
 
@@ -47,12 +47,12 @@ export default async function DashboardPage() {
           <CVUploadForm />
         </div>
 
-        {/* All CVs Section */}
+        {/* My CVs Section */}
         <div>
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
-            Alle uploadede CV'er
+            Mine CV'er
           </h2>
-          <CVGallery />
+          <MyCVGallery />
         </div>
       </main>
     </div>
