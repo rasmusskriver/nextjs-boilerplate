@@ -1,4 +1,4 @@
-import { stackServerApp } from "@/lib/stack";
+import { stackServerApp } from "@/stack/server";
 
 export const handlers = stackServerApp.handler;
 export const GET = handlers;

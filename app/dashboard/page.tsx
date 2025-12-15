@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import CVUploadForm from "@/components/CVUploadForm";
 import CVGallery from "@/components/CVGallery";
-import { stackServerApp } from "@/lib/stack";
+import { stackServerApp } from "@/stack/server";
 import { redirect } from "next/navigation";
 import { Upload, LayoutDashboard } from "lucide-react";
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { cvs } from '@/lib/db/schema';
-import { stackServerApp } from '@/lib/stack';
+import { stackServerApp } from '@/stack/server';
 import { eq } from 'drizzle-orm';
 
 export async function POST(request: NextRequest) {

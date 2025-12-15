@@ -1,6 +1,6 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
-import { stackServerApp } from "@/lib/stack";
+import { stackServerApp } from "@/stack/server";
 
 const f = createUploadthing();
 
