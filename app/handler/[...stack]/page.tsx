@@ -1,5 +1,12 @@
-"use client";
+import { StackHandler } from '@stackframe/stack';
+import { stackServerApp } from "@/stack/server";
 
-import { StackHandler } from "@stackframe/stack";
-
-export default StackHandler;
+export default function Handler(props: { params: any, searchParams: any }) {
+  return (
+    <StackHandler
+      app={stackServerApp}
+      routeProps={props}
+      fullPage={true}
+    />
+  );
+}
