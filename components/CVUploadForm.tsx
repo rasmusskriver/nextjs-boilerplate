@@ -1,13 +1,11 @@
 'use client';
 
-import { useUser } from "@stackframe/stack";
 import { useRouter } from "next/navigation";
 import { useState, Suspense } from "react";
 import { useUploadThing } from "@/lib/uploadthing";
 import { Upload, FileText, Loader2 } from "lucide-react";
 
 function CVUploadFormContent() {
-  const user = useUser();
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,7 +16,7 @@ function CVUploadFormContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !title || !user) return;
+    if (!file || !title) return;
 
     setUploading(true);
 

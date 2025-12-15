@@ -1,10 +1,9 @@
 # CV Deling Platform 🚀
 
-En moderne, professionel platform til at dele og opdage CV'er, bygget med Next.js 16, Stack Auth, Neon PostgreSQL og UploadThing.
+En moderne, professionel platform til at dele og opdage CV'er, bygget med Next.js 16, Neon PostgreSQL og UploadThing.
 
 ## ✨ Features
 
-- 🔐 **Sikker Authentication** - Stack Auth integration med moderne login/logout
 - 📄 **CV Upload** - Upload PDF CV'er med drag-and-drop interface
 - 🎨 **Moderne UI** - Elegant design med Tailwind CSS og gradients
 - 💾 **Database Integration** - Neon PostgreSQL med Drizzle ORM
@@ -17,7 +16,6 @@ En moderne, professionel platform til at dele og opdage CV'er, bygget med Next.j
 - **Framework**: Next.js 16
 - **Database**: Neon PostgreSQL
 - **ORM**: Drizzle ORM
-- **Authentication**: Stack Auth
 - **File Upload**: UploadThing
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
@@ -62,11 +60,10 @@ npm run dev
 /
 ├── app/
 │   ├── api/
-│   │   ├── auth/[...stack]/   # Stack Auth endpoints
 │   │   ├── cvs/               # CV CRUD operations
 │   │   └── uploadthing/       # File upload
-│   ├── dashboard/             # Dashboard side (kræver login)
-│   ├── layout.tsx             # Root layout med providers
+│   ├── dashboard/             # Dashboard side
+│   ├── layout.tsx             # Root layout
 │   └── page.tsx               # Home page
 ├── components/
 │   ├── CVGallery.tsx          # Vis alle CV'er
@@ -77,7 +74,6 @@ npm run dev
 │   │   ├── schema.ts          # Database schema
 │   │   ├── index.ts           # DB connection
 │   │   └── migrations/        # SQL migrations
-│   ├── stack.ts               # Stack Auth config
 │   └── uploadthing.ts         # UploadThing helpers
 └── drizzle.config.ts          # Drizzle konfiguration
 ```
@@ -88,9 +84,8 @@ npm run dev
 
 1. **Gå til hjemmesiden** - Se hero section og features
 2. **Se CV'er** - Scroll ned for at se alle uploadede CV'er
-3. **Log ind** - Klik på "Log ind" i header
-4. **Upload CV** - Gå til Dashboard og upload dit PDF CV
-5. **Administrer** - Se og slet dine egne CV'er
+3. **Upload CV** - Gå til Dashboard og upload dit PDF CV
+4. **Administrer** - Se og slet CV'er
 
 ### Database Schema:
 
@@ -122,17 +117,9 @@ Table: cvs
 Alle nødvendige environment variables er allerede i `.env.local`:
 
 - ✅ `DATABASE_URL` - Neon database forbindelse
-- ✅ `NEXT_PUBLIC_STACK_PROJECT_ID` - Stack Auth projekt ID
-- ✅ `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY` - Stack Auth client key
-- ✅ `STACK_SECRET_SERVER_KEY` - Stack Auth server key
 - ⚠️ `UPLOADTHING_TOKEN` - Skal tilføjes fra uploadthing.com
 
 ## 💡 Features i detaljer
-
-### Authentication
-- Stack Auth integration med email/password
-- Protected routes (dashboard)
-- Bruger context tilgængelig i hele appen
 
 ### CV Upload
 - Drag-and-drop PDF upload
@@ -142,9 +129,8 @@ Alle nødvendige environment variables er allerede i `.env.local`:
 
 ### CV Gallery
 - Responsive grid layout
-- Søgning og filtrering
 - Download CV direkte
-- Slet dine egne CV'er
+- Slet CV'er
 
 ### UI/UX
 - Dark mode support

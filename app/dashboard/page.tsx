@@ -1,18 +1,10 @@
 import Header from "@/components/Header";
 import CVUploadForm from "@/components/CVUploadForm";
 import CVGallery from "@/components/CVGallery";
-import { stackServerApp } from "@/stack/server";
-import { redirect } from "next/navigation";
 import { Upload, LayoutDashboard, Settings } from "lucide-react";
 import Link from "next/link";
 
 export default async function DashboardPage() {
-  const user = await stackServerApp.getUser();
-
-  if (!user) {
-    redirect("/handler/sign-in");
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
       <Header />
@@ -30,7 +22,7 @@ export default async function DashboardPage() {
                   Dashboard
                 </h1>
                 <p className="text-zinc-600 dark:text-zinc-400">
-                  Velkommen tilbage, {user.displayName || user.primaryEmail}!
+                  Velkommen tilbage!
                 </p>
               </div>
             </div>

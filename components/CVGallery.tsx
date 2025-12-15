@@ -1,12 +1,10 @@
 'use client';
 
 import { useEffect, useState, Suspense } from "react";
-import { useUser } from "@stackframe/stack";
 import { FileText, Download, Trash2, Calendar, User, Mail } from "lucide-react";
 import type { CV } from "@/lib/db/schema";
 
 function CVGalleryContent() {
-  const user = useUser();
   const [cvs, setCVs] = useState<CV[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -81,14 +79,12 @@ function CVGalleryContent() {
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
             <div className="flex items-start justify-between">
               <FileText className="w-10 h-10 text-white" />
-              {user?.id === cv.userId && (
-                <button
-                  onClick={() => handleDelete(cv.id)}
-                  className="p-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition"
-                >
-                  <Trash2 className="w-4 h-4 text-white" />
-                </button>
-              )}
+              <button
+                onClick={() => handleDelete(cv.id)}
+                className="p-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg transition"
+              >
+                <Trash2 className="w-4 h-4 text-white" />
+              </button>
             </div>
           </div>
 

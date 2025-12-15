@@ -1,24 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { cvs } from '@/lib/db/schema';
-import { stackServerApp } from '@/stack/server';
 import { eq } from 'drizzle-orm';
 
 export async function POST(request: NextRequest) {
   try {
-    const user = await stackServerApp.getUser();
-    
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const body = await request.json();
     const { title, description, fileUrl, fileName, fileSize } = body;
 
     const newCV = await db.insert(cvs).values({
-      userId: user.id,
-      userName: user.displayName || 'Anonym',
-      userEmail: user.primaryEmail || '',
+      userId: 'anonymous',
+      userName: 'Anonym',
+      userEmail: '',
       title,
       description: description || null,
       fileUrl,
