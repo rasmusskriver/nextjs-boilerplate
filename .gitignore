@@ -42,3 +42,4 @@ next-env.d.ts
 .env*.local
 SETUP_GUIDE.md
 DESIGN_DOC.md
+ToDo.md
