@@ -203,7 +203,7 @@ export default function CVsPage() {
             {filteredCVs.map((cv, index) => (
               <div
                 key={cv.id}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2 animate-in slide-in-from-bottom"
+                className="group bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2 animate-in slide-in-from-bottom flex flex-col"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {/* Card Header with Gradient */}
@@ -222,8 +222,8 @@ export default function CVsPage() {
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 space-y-4">
-                  <div>
+                <div className="p-6 space-y-4 flex-1 flex flex-col">
+                  <div className="flex-1">
                     <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {cv.title}
                     </h3>
@@ -263,7 +263,7 @@ export default function CVsPage() {
                   </div>
 
                   {/* Action Button */}
-                  <div className="pt-4">
+                  <div className="pt-4 mt-auto">
                     <a
                       href={cv.fileUrl}
                       target="_blank"
