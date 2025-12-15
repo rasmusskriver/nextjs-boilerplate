@@ -67,7 +67,7 @@ function CVGalleryContent({ limit }: CVGalleryProps) {
       {cvs.map((cv) => (
         <div
           key={cv.id}
-          className="group bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2"
+          className="group bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2 flex flex-col"
         >
           <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-8 overflow-hidden">
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
@@ -81,7 +81,7 @@ function CVGalleryContent({ limit }: CVGalleryProps) {
             </div>
           </div>
 
-          <div className="p-6 space-y-4">
+          <div className="p-6 space-y-4 flex flex-col flex-grow">
             <div>
               <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {cv.title}
@@ -114,7 +114,7 @@ function CVGalleryContent({ limit }: CVGalleryProps) {
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 mt-auto">
               <a
                 href={cv.fileUrl}
                 target="_blank"
