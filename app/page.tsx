@@ -41,7 +41,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <button
                 onClick={handleGetStarted}
-                className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 Kom i gang
                 <ArrowRight className="w-5 h-5" />
