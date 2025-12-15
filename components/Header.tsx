@@ -31,13 +31,16 @@ function HeaderContent() {
                   <User className="w-4 h-4" />
                   <span className="hidden sm:inline">Dashboard</span>
                 </Link>
-                <Link
-                  href="/handler/sign-out"
+                <button
+                  onClick={async () => {
+                    await user.signOut();
+                    window.location.href = '/';
+                  }}
                   className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition font-medium"
                 >
                   <LogOut className="w-4 h-4" />
                   <span className="hidden sm:inline">Log ud</span>
-                </Link>
+                </button>
               </>
             ) : (
               <Link
