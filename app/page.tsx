@@ -1,9 +1,24 @@
+"use client";
+
 import Header from "@/components/Header";
 import CVGallery from "@/components/CVGallery";
 import { ArrowRight, FileText, Shield, Zap } from "lucide-react";
 import Link from "next/link";
+import { useUser } from "@stackframe/stack";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const user = useUser();
+  const router = useRouter();
+
+  const handleGetStarted = () => {
+    if (user === null) {
+      router.push("/handler/sign-in");
+    } else {
+      router.push("/dashboard");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
       <Header />
@@ -24,13 +39,13 @@ export default function Home() {
               talentfulde professionelle
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-              <Link
-                href="/dashboard"
+              <button
+                onClick={handleGetStarted}
                 className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
               >
                 Kom i gang
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </button>
               <a
                 href="#cvs"
                 className="flex items-center gap-2 px-8 py-4 bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 text-zinc-900 dark:text-zinc-100 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105"
