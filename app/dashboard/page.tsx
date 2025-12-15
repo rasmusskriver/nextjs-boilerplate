@@ -27,7 +27,7 @@ export default async function DashboardPage() {
               </div>
             </div>
             <Link
-              href="/account"
+              href="/handler/account-settings"
               className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 text-zinc-900 dark:text-zinc-100 rounded-lg font-medium transition-all duration-200 hover:scale-105"
             >
               <Settings className="w-5 h-5" />

@@ -3,7 +3,18 @@
 import Header from "@/components/Header";
 import { useUser } from "@stackframe/stack";
 import { useEffect, useState } from "react";
-import { FileText, Download, Calendar, User, Mail, Search, Filter, Grid3x3, LayoutList, ArrowUpDown } from "lucide-react";
+import {
+  FileText,
+  Download,
+  Calendar,
+  User,
+  Mail,
+  Search,
+  Filter,
+  Grid3x3,
+  LayoutList,
+  ArrowUpDown,
+} from "lucide-react";
 import type { CV } from "@/lib/db/schema";
 import { useRouter } from "next/navigation";
 
@@ -43,16 +54,19 @@ export default function CVsPage() {
   }, [user]);
 
   useEffect(() => {
-    let filtered = cvs.filter((cv) =>
-      cv.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cv.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (cv.description?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
+    let filtered = cvs.filter(
+      (cv) =>
+        cv.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        cv.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (cv.description?.toLowerCase().includes(searchTerm.toLowerCase()) ??
+          false),
     );
 
     // Sort
     if (sortBy === "date") {
-      filtered = filtered.sort((a, b) => 
-        new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime()
+      filtered = filtered.sort(
+        (a, b) =>
+          new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime(),
       );
     } else {
       filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
@@ -103,13 +117,17 @@ export default function CVsPage() {
             <FileText className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-5xl sm:text-6xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-4 tracking-tight">
-            Alle <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">CV'er</span>
+            Alle{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              CV'er
+            </span>
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Udforsk professionelle CV'er fra talentfulde personer på platformen
           </p>
           <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-500">
-            {filteredCVs.length} {filteredCVs.length === 1 ? "CV" : "CV'er"} fundet
+            {filteredCVs.length} {filteredCVs.length === 1 ? "CV" : "CV'er"}{" "}
+            fundet
           </div>
         </div>
 
@@ -175,7 +193,9 @@ export default function CVsPage() {
               {searchTerm ? "Ingen CV'er fundet" : "Ingen CV'er endnu"}
             </h3>
             <p className="text-zinc-600 dark:text-zinc-400">
-              {searchTerm ? "Prøv en anden søgning" : "Vær den første til at uploade et CV!"}
+              {searchTerm
+                ? "Prøv en anden søgning"
+                : "Vær den første til at uploade et CV!"}
             </p>
           </div>
         ) : viewMode === "grid" ? (
@@ -220,19 +240,25 @@ export default function CVsPage() {
                       <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                         <User className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <span className="font-medium truncate">{cv.userName}</span>
+                      <span className="font-medium truncate">
+                        {cv.userName}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
                       <div className="w-8 h-8 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                       </div>
-                      <span className="truncate text-xs">{cv.userEmail || "Ikke angivet"}</span>
+                      <span className="truncate text-xs">
+                        {cv.userEmail || "Ikke angivet"}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
                       <div className="w-8 h-8 bg-gradient-to-br from-pink-100 to-orange-100 dark:from-pink-900/30 dark:to-orange-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Calendar className="w-4 h-4 text-pink-600 dark:text-pink-400" />
                       </div>
-                      <span className="text-xs">{formatDate(cv.uploadedAt)}</span>
+                      <span className="text-xs">
+                        {formatDate(cv.uploadedAt)}
+                      </span>
                     </div>
                   </div>
 
@@ -247,9 +273,6 @@ export default function CVsPage() {
                       <Download className="w-5 h-5" />
                       Åbn CV
                     </a>
-                    <div className="text-xs text-center text-zinc-500 dark:text-zinc-600 mt-2">
-                      {cv.fileSize}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -289,9 +312,6 @@ export default function CVsPage() {
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
                             <span>{formatDate(cv.uploadedAt)}</span>
-                          </div>
-                          <div className="text-zinc-500">
-                            {cv.fileSize}
                           </div>
                         </div>
                       </div>

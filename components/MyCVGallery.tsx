@@ -154,9 +154,6 @@ export default function MyCVGallery() {
                 <Download className="w-5 h-5" />
                 Åbn CV
               </a>
-              <div className="text-xs text-center text-zinc-500 dark:text-zinc-600 mt-2">
-                {cv.fileSize}
-              </div>
             </div>
           </div>
         </div>
