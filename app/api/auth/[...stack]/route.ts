@@ -1,9 +1,5 @@
-import { StackHandler } from "@stackframe/stack";
+import { stackServerApp } from "@/lib/stack";
 
-export const GET = StackHandler({
-  handlers: {
-    getUser: async (user) => {
-      return { user };
-    },
-  },
-});
+export const handlers = stackServerApp.handler;
+export const GET = handlers;
+export const POST = handlers;
