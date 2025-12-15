@@ -15,7 +15,7 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"></div>
             <span className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              CV Platform
+              Drejøs CV Platform
             </span>
           </Link>
 
