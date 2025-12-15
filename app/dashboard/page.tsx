@@ -3,7 +3,8 @@ import CVUploadForm from "@/components/CVUploadForm";
 import CVGallery from "@/components/CVGallery";
 import { stackServerApp } from "@/stack/server";
 import { redirect } from "next/navigation";
-import { Upload, LayoutDashboard } from "lucide-react";
+import { Upload, LayoutDashboard, Settings } from "lucide-react";
+import Link from "next/link";
 
 export default async function DashboardPage() {
   const user = await stackServerApp.getUser();
@@ -19,18 +20,27 @@ export default async function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Welcome Section */}
         <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-              <LayoutDashboard className="w-6 h-6 text-white" />
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <LayoutDashboard className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100">
+                  Dashboard
+                </h1>
+                <p className="text-zinc-600 dark:text-zinc-400">
+                  Velkommen tilbage, {user.displayName || user.primaryEmail}!
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100">
-                Dashboard
-              </h1>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Velkommen tilbage, {user.displayName || user.primaryEmail}!
-              </p>
-            </div>
+            <Link
+              href="/account"
+              className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 text-zinc-900 dark:text-zinc-100 rounded-lg font-medium transition-all duration-200 hover:scale-105"
+            >
+              <Settings className="w-5 h-5" />
+              Indstillinger
+            </Link>
           </div>
         </div>
 
