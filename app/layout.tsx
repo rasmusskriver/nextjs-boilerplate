@@ -1,8 +1,3 @@
-import { authClient } from "@/lib/auth/client";
-import {
-  NeonAuthUIProvider,
-  UserButton,
-} from "@neondatabase/neon-js/auth/react/ui";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -32,16 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NeonAuthUIProvider
-          authClient={authClient}
-          redirectTo="/account/settings"
-          emailOTP
-        >
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <UserButton size="icon" />
-          </header>
-          {children}
-        </NeonAuthUIProvider>
+        {children}
       </body>
     </html>
   );
