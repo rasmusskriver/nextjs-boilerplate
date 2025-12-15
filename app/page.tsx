@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-black dark:via-zinc-900 dark:to-zinc-800">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-600/5 dark:to-purple-600/5"></div>
@@ -20,7 +20,8 @@ export default function Home() {
               </span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              En moderne platform hvor du nemt kan dele og opdage CV'er fra talentfulde professionelle
+              En moderne platform hvor du nemt kan dele og opdage CV'er fra
+              talentfulde professionelle
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <Link
@@ -81,7 +82,10 @@ export default function Home() {
       </section>
 
       {/* CV Gallery */}
-      <section id="cvs" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section
+        id="cvs"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+      >
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-4">
             Udforsk CV'er
