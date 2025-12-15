@@ -48,6 +48,10 @@ export default function Home() {
               </button>
               <a
                 href="#cvs"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('cvs')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="flex items-center gap-2 px-8 py-4 bg-white dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 text-zinc-900 dark:text-zinc-100 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105"
               >
                 Se CV'er
